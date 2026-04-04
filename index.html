@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Web Personal</title>
+
+    <!-- Fuente moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background:
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+                url("yone-bg.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background: #111111;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            position: relative;
+        }
+
+       header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+
+    background-clip: text;              /* estándar */
+    -webkit-background-clip: text;      /* Chrome/Safari */
+    
+    color: transparent;                 /* estándar */
+    -webkit-text-fill-color: transparent; /* WebKit */
+
+    text-shadow: 0 0 25px rgba(255,126,95,0.3);
+}
+
+header p {
+    color: #aaa;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+header p::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border-radius: 2px;
+}
+
+        html {
+        scroll-behavior: smooth;
+        }
+
+        #langSwitcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 6px 14px;
+            background: #111111;
+            color: #e5e5e5;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid #222;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #langSwitcher:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+        }
+
+.lang-buttons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.lang-buttons button {
+    padding: 6px 12px;
+    background: #1a1a1a;
+    color: #dddddd;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.lang-buttons button:hover {
+    color: #ffffff;
+    background: #1a1a1a;
+}
+
+.lang-buttons .active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-color: transparent;
+    box-shadow: 0 0 15px rgba(255,126,95,0.6);
+}
+
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;   /* más grande */
+    height: 40px;   /* más alto */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: relative;
+    background: #222;
+    border-radius: 25px;
+    border: 1px solid #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.slider .lang {
+    flex: 1;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;            /* letra blanca siempre */
+    transition: background 0.3s;
+    z-index: 2;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Fondo activo que se mueve */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 36px;
+    width: 50%;
+    top: 2px;
+    left: 0;
+    background: #ff7e5f;   /* color activo */
+    border-radius: 25px;
+    transition: transform 0.3s;
+    z-index: 1;
+}
+
+input:checked + .slider::before {
+    transform: translateX(100%); /* se mueve a la zona EN */
+}
+
+        nav {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #1a1a1a;
+    border: 1px solid #222;
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+nav a.active {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+}
+
+nav a:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-color: transparent;
+    box-shadow: 0 0 10px rgba(255,126,95,0.4);
+    transform: translateY(-2px);
+}
+
+section {
+    padding: 25px 40px; /* reduce el padding vertical de 30px a 20px */
+    max-width: 900px;
+    margin: 10px auto;
+}
+
+section h2 {
+    margin-top: 0; /* evita que el título tenga margen extra arriba */
+    margin-bottom: 18px; /* ajusta el espacio entre el título y el contenido */
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255,126,95,0.3);
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    border-radius: 5px;
+}
+
+        h1, h2 {
+            color: #ffffff;
+        }
+
+        .card {
+            background: #111111;
+            padding: 20px;
+            margin: 8px 0;
+            border-radius: 12px;
+            border: 1px solid #222;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+/* Glow general */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,126,95,0.12), transparent 65%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover {
+            box-shadow: 0 0 25px rgba(255,255,255,0.15);
+            transform: translateY(-5px) scale(1.01);
+        }
+
+/* Hover más intenso */
+.card:hover::before {
+    background: radial-gradient(circle at top right, rgba(255,126,95,0.2), transparent 65%);
+}
+
+        .lol-section {
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .lol-card {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 18px 20px;
+}
+
+/* Título */
+.lol-title {
+    font-size: 1.3rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Texto */
+.lol-desc {
+    color: #bbb;
+    font-size: 0.95rem;
+}
+
+/* Contenedor stats */
+.lol-stats {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+/* Cada item */
+.lol-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0f0f0f;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #222;
+
+    transition: all 0.3s ease;
+}
+
+.lol-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255,126,95,0.3);
+}
+
+/* Hover más sutil para lol-card */
+.lol-card:hover {
+    transform: scale(1.01); /* leve, no tan marcado */
+    box-shadow: 0 0 12px rgba(255,126,95,0.12);
+}
+
+/* Hover de los items dentro de lol-card */
+.lol-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255,126,95,0.3);
+}
+
+/* Iconos mejorados */
+.lol-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    object-fit: cover;
+
+    background: #1a1a1a;
+    padding: 3px;
+    border: 1px solid #333;
+
+    box-shadow: 0 0 8px rgba(255,126,95,0.25);
+}
+
+        .socials {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+
+        .socials a, .socials span {
+            color: #bbbbbb;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .socials a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111111;
+            margin-top: 10px;
+            border-top: 1px solid #222;
+            color: #888;
+        }
+
+        /* Animaciones */
+        .hidden {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Botón premium */
+        .premium-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #e65c3a, #d9985a);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.2;
+            box-shadow: 0 4px 15px rgba(255,126,95,0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .premium-btn i {
+            font-size: 1em;
+            line-height: 1;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,126,95,0.5);
+        }
+
+        /* Separación y alineación entre botones */
+        .video-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .video-buttons a {
+            text-decoration: none;
+            outline: none;
+        }
+
+@media (max-width: 768px) {
+    .volleyball-container {
+        flex-direction: column;
+    }
+}
+
+.volleyball-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.volleyball-text {
+    flex: 2; /* texto más ancho */
+    min-width: 250px; /* evita que sea demasiado estrecho */
+}
+
+.volleyball-image {
+    flex: 1;                /* que ocupe proporcionalmente menos que el texto */
+    max-width: 320px;       /* tamaño máximo de la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    background: #111111;
+    height: auto;
+}
+
+.volleyball-image img {
+    width: 100%;     /* se ajusta al div de la imagen */
+    height: 100%;    /* mantiene proporción */
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Dibujos (más artístico) */
+#dibujos .card::before {
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 65%);
+}
+
+/* Voleibol (más energía) */
+#voleibol .card::before {
+    background: radial-gradient(circle at top right, rgba(255,180,80,0.15), transparent 65%);
+}
+
+#calistenia .card::before {
+       background: radial-gradient(circle at top right, rgba(16, 159, 76, 0.08), transparent 65%);
+}
+
+        /* Carrusel de dibujos avanzado */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.4s ease;
+            gap: 15px;
+        }
+
+        .carousel img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 12px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,126,95,0.8);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255,126,95,1);
+        }
+
+        .left-btn { left: 10px; }
+        .right-btn { right: 10px; }
+
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px; /* grosor de la barra */
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    width: 0%; /* empezamos vacía */
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+}
+
+/* Barra de progreso calistenia */
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    box-shadow: 0 0 10px rgba(255,126,95,0.5);
+    transition: width 0.5s ease;
+}
+
+/* Idioma */
+
+.lang-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;       /* ancho total */
+    height: 40px;       /* alto */
+    display: flex;
+    border-radius: 25px;
+    background: #222;   /* fondo general */
+    cursor: pointer;
+    overflow: hidden;
+    align-items: center; /* centra verticalmente */
+    justify-content: space-between;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.lang-toggle .lang {
+    flex: 1;
+    text-align: center;
+    z-index: 2;         /* encima del fondo */
+    font-weight: 600;
+    color: #bbb;        /* inactivo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: color 0.3s;
+}
+
+.lang-toggle .lang.active {
+    color: #fff;        /* activo */
+}
+
+/* fondo iluminado que se mueve */
+.lang-toggle .toggle-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;         /* la mitad del toggle */
+    height: 100%;
+    background: #ff7e5f;
+    border-radius: 25px;
+    transition: transform 0.3s;
+    z-index: 1;          /* detrás del texto */
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #e65c3a, #d9985a); /* más oscuro */
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.3s ease;
+    z-index: 9999;
+}
+
+#backToTop:hover {
+    filter: brightness(1.1);
+}
+
+#backToTop.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Botones de RRSS */
+
+.social-cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #0f0f0f;
+    border: 1px solid #222;
+    border-radius: 12px;
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-card i {
+    font-size: 1.2rem;
+}
+
+.social-card:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255,126,95,0.3);
+}
+
+/* Espaciado del header con el botón */
+
+header .premium-btn {
+    margin-bottom: 30px;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Botón volver arriba -->
+
+<button id="backToTop">
+  <span class="lang-es">⬆ Volver arriba</span>
+  <span class="lang-en" style="display:none;">⬆ Back to top</span>
+</button>
+
+<header>
+   <div class="lang-toggle">
+  <span class="lang" data-lang="es">ES</span>
+  <span class="lang" data-lang="en">EN</span>
+  <div class="toggle-bg"></div> <!-- fondo móvil -->
+</div>
+
+    <h1 data-es="Mi Web Personal" data-en="My Personal Website">
+    Mi Web Personal
+</h1>
+
+<p style="color:#bbb; margin-top:10px; font-size:1.2rem;"
+   data-es="Disciplina, progreso y mentalidad competitiva."
+   data-en="Discipline, progress and competitive mindset.">
+</p>
+
+<div style="margin-top:20px;">
+    <a href="#sobre-mi" class="premium-btn"
+       data-es="🚀 Sigue mi progreso"
+       data-en="🚀 Follow my journey">
+        🚀 Sigue mi progreso
+    </a>
+</div>
+  
+    <nav>
+        <a href="#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
+        <a href="#dibujos" data-es="Dibujos" data-en="Drawings">Dibujos</a>
+        <a href="#voleibol" data-es="Voleibol" data-en="Volleyball">Voleibol</a>
+        <a href="#calistenia" data-es="Calistenia" data-en="Calisthenics">Calistenia</a>
+        <a href="#videojuegos" data-es="Videojuegos" data-en="Video Games">Videojuegos</a>
+    </nav>
+</header>
+
+<div id="scrollProgress"></div>
+
+<section id="sobre-mi" class="hidden">
+    <h2 data-es="Sobre mí" data-en="About Me">Sobre mí</h2>
+    <div class="card">
+        <p
+        data-es="Tengo 16 años y una meta clara: superarme cada día. Para mí, el deporte no es solo ejercicio, es una forma de crecer."
+        data-en="I'm 16 years old and I have a clear goal: to improve myself every day. For me, sports are not just exercise, they are a way to grow.">
+        Tengo 16 años y una meta clara: superarme cada día. Para mí, el deporte no es solo ejercicio, es una forma de crecer.
+        </p>
+        <p
+        data-es="Empecé en el voleibol sin saber nada, pero poco a poco fui mejorando hasta encontrar mi sitio como líbero. En la calistenia, desarrollo fuerza mental y control sobre mi propio cuerpo."
+        data-en="I started in volleyball without any knowledge, but I started improving little by little until I found my place as a libero. With calisthenics, I build mental strength and control over my own body.">
+        Empecé en el voleibol sin saber nada, pero poco a poco fui mejorando hasta encontrar mi sitio como líbero. En la calistenia, desarrollo fuerza mental y control sobre mi propio cuerpo.
+        </p>
+
+        <p 
+        data-es="Cuando no estoy entrenando, me gusta desconectar jugando. Los videojuegos son mi espacio para pensar, competir y seguir mejorando."
+        data-en="When I'm not training, I enjoy disconnecting by playing. Video games are my space to think, compete, and keep improving.">
+        Cuando no estoy entrenando, me gusta desconectar jugando. Los videojuegos son mi espacio para pensar, competir y seguir mejorando.
+        </p>
+
+        <p 
+        data-es="También dibujo y escucho música en mi tiempo libre. Si quieres ver mi progreso o simplemente conocerme mejor, puedes encontrarme en mis redes."
+        data-en="I also draw and listen to music in my free time. If you want to see my progress or just know me better, you can find me on my socials.">
+        También dibujo y escucho música en mi tiempo libre.  Si quieres ver mi progreso o simplemente conocerme mejor, puedes encontrarme en mis redes.
+        </p>
+
+        <div class="social-cards" style="margin-top:20px; flex-wrap:wrap;">
+          <a href="https://www.instagram.com/teo.bbl" target="_blank" class="social-card">
+          <i class="fab fa-instagram"></i>
+          <span>@teo.bbl</span>
+        </a>
+
+        <div class="social-card">
+         <i class="fab fa-discord"></i>
+         <span>chamaleon67</span>
+        </div>
+
+        <div class="social-card">
+         <i class="fab fa-spotify"></i>
+            <span>Chamaleon67</span>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN DE DIBUJOS -->
+<section id="dibujos" class="hidden">
+   <h2 data-es="🎨 Dibujos" data-en="🎨 Drawings">🎨 Dibujos</h2>
+    <div class="card">
+<p data-es="Estos son algunos de mis dibujos. Intento mejorar poco a poco y me gusta mucho hacer sombreados."
+   data-en="These are some of my drawings. I try to improve little by little and I really enjoy shading.">
+   Estos son algunos de mis dibujos. Intento mejorar poco a poco y me gusta mucho hacer sombreados.
+</p>
+</div>
+    <div class="card carousel-container">
+        <button class="carousel-btn left-btn">&#10094;</button>
+        <div class="carousel">
+            <img src="zelda.jpg" alt="Dibujo 1">
+            <img src="saitama.jpg" alt="Dibujo 2">
+            <img src="kakashi.jpg" alt="Dibujo 3">
+            <img src="guy.jpg" alt="Dibujo 4">
+            <img src="jedi.jpg" alt="Dibujo 5">
+            <img src="kiss.jpg" alt="Dibujo 6">
+            <!-- Añade más imágenes aquí -->
+        </div>
+        <button class="carousel-btn right-btn">&#10095;</button>
+    </div>
+</section>
+
+<section id="voleibol" class="hidden">
+    <h2 data-es="🏐 Voleibol" data-en="🏐 Volleyball">🏐 Voleibol</h2>
+    <div class="volleyball-container">
+
+    <div class="card volleyball-text">
+        <p 
+        data-es="El voleibol es una de mis grandes pasiones. Me ayuda a desconectar y a mejorar tanto física como mentalmente."
+        data-en="Volleyball is one of my biggest passions. It helps me unwind and improve both physically and mentally.">
+        El voleibol es una de mis grandes pasiones. Me ayuda a desconectar y a mejorar tanto física como mentalmente.
+        </p>
+
+        <p 
+        data-es="Juego de líbero, lo que me permite practicar la recepción, leer el juego y comunicarme con el equipo. Empecé gracias al anime 'Haikyuu' y desde entonces disfruto cada partido."
+        data-en="I play as a libero, which lets me practice reception, read the game, and communicate with my team. I started thanks to the anime 'Haikyuu', and I’ve enjoyed every match since.">
+        Juego de líbero, lo que me permite practicar la recepción, leer el juego y comunicarme con el equipo. Empecé gracias al anime 'Haikyuu' y desde entonces disfruto cada partido.
+        </p>
+
+        <p 
+        data-es="Cada entrenamiento y partido me enseña disciplina, trabajo en equipo y cómo superarme día a día."
+        data-en="Every training session and match teaches me discipline, teamwork, and how to push myself every day.">
+        Cada entrenamiento y partido me enseña disciplina, trabajo en equipo y cómo superarme día a día.
+        </p>
+    </div>
+
+    <div class="card volleyball-image">
+            <img src="noya.jpg" alt="Nishinoya">
+    </div>
+</div>
+</section>
+
+<section id="calistenia" class="hidden">
+    <h2 data-es="💪 Calistenia" data-en="💪 Calisthenics">💪 Calistenia</h2>
+    <div class="volleyball-container">
+
+        <div class="card volleyball-image">
+            <img src="handstand.jpg" alt="Calistenia">
+        </div>
+    
+    <div class="card volleyball-text">
+        <p data-es="Me gusta entrenar en casa con mi propio peso corporal. Es una forma increíble de ganar fuerza y disciplina."
+           data-en="I enjoy training at home with my own body weight. It's an amazing way to gain strength and discipline.">
+            Me gusta entrenar en casa con mi propio peso corporal. Es una forma increíble de ganar fuerza y disciplina.
+        </p>
+
+       <!-- Objetivo -->
+<div class="card">
+    <p 
+    data-es="<strong>🎯 Objetivo actual:</strong> Conseguir una tuck planche sólida durante 10 segundos y seguir progresando hacia la full planche."
+    data-en="<strong>🎯 Current goal:</strong> Achieve a solid tuck planche for 10 seconds and keep progressing towards the full planche.">
+    
+    <strong>🎯 Objetivo actual:</strong> Conseguir una tuck planche sólida durante 10 segundos y seguir progresando hacia la full planche.
+    
+    </p>
+</div>
+
+<!-- Stats -->
+<div class="lol-stats">
+    <div class="lol-item">
+        <span 
+        data-es="💪 Flexiones" 
+        data-en="💪 Push-ups">
+        💪 Flexiones
+        </span>
+        <strong>60</strong>
+    </div>
+
+    <div class="lol-item">
+        <span 
+        data-es="🏋️ Dominadas" 
+        data-en="🏋️ Pull-ups">
+        🏋️ Dominadas
+        </span>
+        <strong>9</strong>
+    </div>
+
+    <div class="lol-item">
+        <span 
+        data-es="🔥 Planche" 
+        data-en="🔥 Planche">
+        🔥 Planche
+        </span>
+        <strong 
+        data-es="Progresión" 
+        data-en="Progress">
+        Progresión
+        </strong>
+    </div>
+</div>
+
+<!-- Barra de progreso -->
+<div class="card progress-container" data-progress="20"> <!-- Cambiar esto cada vez que mejore el progreso-->
+    
+    <p 
+    data-es="Progreso hacia la full planche"
+    data-en="Progress towards full planche">
+    Progreso hacia la full planche
+    </p>
+
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+
+    <p class="progress-text" style="margin-top:8px; color:#aaa;">
+        20% <!-- Cambiar esto también-->
+    </p>
+
+</div>
+
+        <p data-es="¿Quieres saber cómo progreso? Esta es la web que uso para mejorar:"
+           data-en="Do you want to know how I improve? This is the website I use:">
+            ¿Quieres saber cómo progreso? Esta es la web que uso para mejorar:
+        </p>
+        <a href="https://wingssw.com" target="_blank">
+        <button class="premium-btn" 
+            data-es='<i class="fas fa-chart-line"></i> Ver progreso' 
+            data-en='<i class="fas fa-chart-line"></i> See Progress'>
+                <i class="fas fa-chart-line"></i> Ver progreso
+            </button>
+        </a>
+    </div>
+</section>
+
+<section id="videojuegos" class="hidden">
+    <h2 data-es="🎮 Videojuegos" data-en="🎮 Video Games">🎮 Videojuegos</h2>
+    <div class="card">
+        <p data-es="Disfruto especialmente de los juegos competitivos. Juego a MOBAs y shooters."
+           data-en="I especially enjoy competitive games. I play MOBAs and shooters.">
+            Disfruto especialmente de los juegos competitivos. Juego a MOBAs y shooters.
+        </p>
+        <p data-es="Estas son mis páginas de práctica favoritas:"
+           data-en="These are my favorite practice sites:">
+            Estas son mis páginas de práctica favoritas:
+        </p>
+        <div class="video-buttons">
+    <a href="https://loldodgegame.com/" target="_blank">
+        <button class="premium-btn"
+            data-es='<i class="fas fa-gamepad"></i> Práctica para MOBA'
+            data-en='<i class="fas fa-gamepad"></i> MOBA Practice'>
+            <i class="fas fa-gamepad"></i> Práctica para MOBA
+        </button>
+    </a>
+    <a href="https://app.3daimtrainer.com/quick-play" target="_blank">
+        <button class="premium-btn"
+            data-es='<i class="fas fa-crosshairs"></i> Práctica para shooter'
+            data-en='<i class="fas fa-crosshairs"></i> Shooter Practice'>
+            <i class="fas fa-crosshairs"></i> Práctica para shooter
+        </button>
+    </a>
+</div>
+
+<div class="card lol-card">
+    <h3 class="lol-title" data-es="⚔️ League of Legends" data-en="⚔️ League of Legends">⚔️ League of Legends</h3>
+    
+    <p class="lol-desc" data-es="Actualmente estoy centrado en mejorar mi nivel y entender mejor el macro del juego."
+       data-en="I am currently focused on improving my skill level and understanding the macro game better.">
+        Actualmente estoy centrado en mejorar mi nivel y entender mejor el macro del juego.
+    </p>
+
+  <div class="lol-stats">
+    <div class="lol-item">
+        <img class="lol-icon" src="silver.jpg">
+        <span data-es="Rango: <strong>Plata</strong>" 
+              data-en="Rank: <strong>Silver</strong>">
+            Rango: <strong>Plata</strong>
+        </span>
+    </div>
+
+    <div class="lol-item">
+        <img class="lol-icon" src="yone.png">
+        <span data-es="Main: <strong>Yone</strong>" 
+              data-en="Main: <strong>Yone</strong>">
+            Main: <strong>Yone</strong>
+        </span>
+    </div>
+</div>
+
+    <p class="lol-desc" data-es="Estoy abierto a coaching y a recibir consejos para seguir mejorando."
+       data-en="I am open to coaching and receiving tips to keep improving.">
+        Estoy abierto a coaching y a recibir consejos para seguir mejorando.
+    </p>
+
+    <a href="https://op.gg/lol/summoners/euw/Indiana%20YONEs-INT" target="_blank" class="premium-btn"
+       data-es='<i class="fas fa-user"></i> Ver perfil' data-en='<i class="fas fa-user"></i> View profile'>
+        <i class="fas fa-user"></i> Ver perfil
+    </a>
+</div>
+</section>
+
+<footer>
+    <p data-es="© 2026 - Mi Web Personal" data-en="© 2026 - My Personal Website">© 2026 - Mi Web Personal</p>
+</footer>
+
+<script>
+
+// Barra de progreso de scroll
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('scrollProgress').style.width = scrollPercent + "%";
+});
+
+// Animación de entrada
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
+// Toggle de idioma
+const langSpans = document.querySelectorAll('.lang-toggle .lang');
+const toggleBg = document.querySelector('.lang-toggle .toggle-bg');
+
+const savedLang = localStorage.getItem('lang') || 'es';
+langSpans.forEach(span => {
+    span.classList.toggle('active', span.getAttribute('data-lang') === savedLang);
+});
+toggleBg.style.transform = savedLang === 'en' ? 'translateX(100%)' : 'translateX(0%)';
+changeLang(savedLang);
+
+langSpans.forEach((span, i) => {
+    span.addEventListener('click', () => {
+        langSpans.forEach(s => s.classList.remove('active'));
+        span.classList.add('active');
+        toggleBg.style.transform = `translateX(${i * 100}%)`;
+        const lang = span.getAttribute('data-lang');
+        changeLang(lang);
+        localStorage.setItem('lang', lang);
+    });
+});
+
+function changeLang(lang) {
+    document.querySelectorAll('[data-es]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+    });
+}
+
+// Carrusel infinito
+document.querySelectorAll('.carousel-container').forEach(container => {
+    const carousel = container.querySelector('.carousel');
+    const leftBtn = container.querySelector('.left-btn');
+    const rightBtn = container.querySelector('.right-btn');
+
+    carousel.innerHTML += carousel.innerHTML; // duplicar imágenes
+    const imgs = carousel.querySelectorAll('img');
+    let index = 0;
+
+    function updateCarousel(animate = true) {
+        const imgWidth = imgs[0].clientWidth + 15; // ancho + gap
+        carousel.style.transition = animate ? 'transform 0.4s ease' : 'none';
+        carousel.style.transform = `translateX(${-index * imgWidth}px)`;
+    }
+
+    rightBtn.addEventListener('click', () => {
+        index++;
+        updateCarousel();
+        if (index >= imgs.length / 2) {
+            setTimeout(() => {
+                index = 0;
+                updateCarousel(false);
+            }, 400);
+        }
+    });
+
+    leftBtn.addEventListener('click', () => {
+        if (index <= 0) index = imgs.length / 2;
+        index--;
+        updateCarousel();
+    });
+
+    window.addEventListener('resize', () => updateCarousel(false));
+    updateCarousel();
+});
+
+// Barra de progreso de calistenia
+document.querySelectorAll('.progress-container').forEach(container => {
+    const progressBar = container.querySelector('.progress');
+    const progressText = container.querySelector('.progress-text');
+    const progressValue = parseInt(container.getAttribute('data-progress')) || 0;
+
+    // Establecer ancho de la barra
+    progressBar.style.width = progressValue + '%';
+
+    // Actualizar el texto
+    if(progressText) {
+        progressText.textContent = progressValue + '%';
+    }
+});
+
+/* Botón de subir arriba del todo*/
+
+const backToTopBtn = document.getElementById('backToTop');
+const langES = backToTopBtn.querySelector('.lang-es');
+const langEN = backToTopBtn.querySelector('.lang-en');
+
+let currentLang = localStorage.getItem('lang') || 'es'; // usar idioma guardado
+setLang(currentLang);
+
+// Mostrar el botón según scroll
+if (backToTopBtn) {
+    const showAfter = 400; // px desde el top
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > showAfter) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    // Click para volver arriba
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Función para cambiar idioma
+function setLang(lang) {
+    currentLang = lang;
+    if (lang === 'es') {
+        langES.style.display = 'inline';
+        langEN.style.display = 'none';
+    } else {
+        langES.style.display = 'none';
+        langEN.style.display = 'inline';
+    }
+}
+
+langSpans.forEach(span => {
+    span.addEventListener('click', () => {
+        const lang = span.getAttribute('data-lang');
+        setLang(lang); // actualizar botón
+        localStorage.setItem('lang', lang);
+    });
+});
+
+</script>
+
+</body>
+</html>
