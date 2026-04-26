@@ -193,14 +193,15 @@ input:checked + .slider::before {
 }
 
 nav a {
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: #1a1a1a;
-    border: 1px solid #222;
-    color: #bbb;
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    color: #ccc;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
 nav a.active {
@@ -209,11 +210,11 @@ nav a.active {
 }
 
 nav a:hover {
-    color: #fff;
+    color: white;
     background: linear-gradient(135deg, #ff7e5f, #feb47b);
     border-color: transparent;
     box-shadow: 0 0 10px rgba(255,126,95,0.4);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 section {
@@ -697,6 +698,54 @@ header .premium-btn {
     margin-bottom: 30px;
 }
 
+/* FOTO MÍA Y TEXTO */
+
+.hero-header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    margin-top:20px;
+    flex-wrap:nowrap;
+    text-align: center;
+}
+
+.hero-img{
+    width:150px;
+    height:150px;
+    flex:0 0 150px;
+    flex-shrink:0;
+    overflow:hidden;
+    border-radius:50%;
+    border:3px solid #ff7e5f;
+    box-shadow:0 0 30px rgba(255,126,95,0.35);
+}
+
+.hero-img img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.hero-text{
+    text-align:center;
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.hero-text h1{
+    margin:0;
+}
+
+.hero-text p{
+    margin-top:10px;
+}
+
 /* =========================
    RESPONSIVE MÓVIL
 ========================= */
@@ -841,6 +890,27 @@ header .premium-btn {
         text-align: left; /* 🔥 importante */
     }
 
+    .hero-header{
+    flex-direction:column;
+    gap:18px;
+}
+
+.hero-text{
+    text-align:center;
+}
+
+.hero-img img{
+    width:85px;
+    height:85px;
+    flex: 0 0 80px;
+}
+
+.hero-text .premium-btn{
+    align-self:center;
+    text-align:center;
+    align-items:center;
+}
+
 }
 
     </style>
@@ -861,6 +931,14 @@ header .premium-btn {
   <div class="toggle-bg"></div> <!-- fondo móvil -->
 </div>
 
+<div class="hero-header">
+
+    <!-- FOTO -->
+    <div class="hero-img">
+        <img src="me.jpg" alt="Perfil">
+    </div>
+
+     <div class="hero-text">
     <h1 data-es="Mi Web Personal" data-en="My Personal Website">
     Mi Web Personal
 </h1>
@@ -870,14 +948,16 @@ header .premium-btn {
    data-en="Discipline, progress and competitive mindset.">
 </p>
 
-<div style="margin-top:20px;">
+    <div class = "hero-btn-wrap";>
     <a href="#sobre-mi" class="premium-btn"
        data-es="🚀 Sigue mi progreso"
        data-en="🚀 Follow my journey">
         🚀 Sigue mi progreso
     </a>
+    </div>
 </div>
-  
+</div>
+
     <nav>
         <a href="#sobre-mi" data-es="Sobre mí" data-en="About me">Sobre mí</a>
         <a href="#dibujos" data-es="Dibujos" data-en="Drawings">Dibujos</a>
