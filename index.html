@@ -6,13 +6,13 @@
     <title>Mi Web Personal</title>
 
     <!-- Fuente moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Sora', sans-serif;
             color: white;
             background:
                 linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
@@ -218,9 +218,9 @@ nav a:hover {
 }
 
 section {
-    padding: 25px 40px; /* reduce el padding vertical de 30px a 20px */
+    padding: 55px 40px; /* reduce el padding vertical de 30px a 20px */
     max-width: 900px;
-    margin: 10px auto;
+    margin: 0 auto;
 }
 
 section h2 {
@@ -246,21 +246,28 @@ section h2::after {
     border-radius: 5px;
 }
 
-        h1, h2 {
-            color: #ffffff;
-        }
+h1, h2 {
 
-        .card {
-            background: #111111;
-            padding: 20px;
-            margin: 8px 0;
-            border-radius: 12px;
-            border: 1px solid #222;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-        }
+color: #ffffff;
+
+}
+
+.card {
+
+background: rgba(17,17,17,0.72);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
+border: 1px solid rgba(255,255,255,0.06);
+padding: 28px;
+margin: 16px 0;
+border-radius: 12px;
+border: 1px solid #222;
+transition: transform 0.3s, box-shadow 0.3s;
+position: relative;
+overflow: hidden;
+backdrop-filter: blur(8px);
+
+}
 
 /* Glow general */
 .card::before {
@@ -273,9 +280,11 @@ section h2::after {
 }
 
 .card:hover {
-            box-shadow: 0 0 25px rgba(255,255,255,0.15);
-            transform: translateY(-5px) scale(1.01);
-        }
+transform: translateY(-8px) scale(1.015);
+box-shadow:
+0 15px 35px rgba(0,0,0,0.35),
+0 0 25px rgba(255,126,95,0.12);
+}
 
 /* Hover más intenso */
 .card:hover::before {
@@ -1084,8 +1093,8 @@ header .premium-btn {
        <!-- Objetivo -->
 <div class="card">
     <p 
-    data-es="<strong>🎯 Objetivo actual:</strong> Conseguir una tuck planche sólida durante 10 segundos y seguir progresando hacia la full planche."
-    data-en="<strong>🎯 Current goal:</strong> Achieve a solid tuck planche for 10 seconds and keep progressing towards the full planche.">
+    data-es="<strong>🎯 Objetivo actual:</strong> Conseguir la advanced tuck planche y seguir progresando hacia la full planche."
+    data-en="<strong>🎯 Current goal:</strong> Achieve the advanced tuck planche and keep progressing towards the full planche.">
     
     <strong>🎯 Objetivo actual:</strong> Conseguir una tuck planche sólida durante 10 segundos y seguir progresando hacia la full planche.
     
@@ -1127,7 +1136,7 @@ header .premium-btn {
 </div>
 
 <!-- Barra de progreso -->
-<div class="card progress-container" data-progress="30"> <!-- Cambiar esto cada vez que mejore el progreso-->
+<div class="card progress-container" data-progress="25"> <!-- Cambiar esto cada vez que mejore el progreso-->
     
     <p 
     data-es="Progreso hacia la full planche"
@@ -1140,7 +1149,7 @@ header .premium-btn {
     </div>
 
     <p class="progress-text" style="margin-top:8px; color:#aaa;">
-        30% <!-- Cambiar esto también-->
+        25% <!-- Cambiar esto también-->
     </p>
 
 </div>
